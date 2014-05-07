@@ -11,7 +11,7 @@ define('ROOT', $root);
 
 $ts = new tsclass();
 
-// µ÷ÓÃÓÃ»§Êı¾İ
+// è°ƒç”¨ç”¨æˆ·æ•°æ®
 function show_bar($text, $used, $limit, $id) {
 	if($limit==0) return;
 
@@ -47,7 +47,7 @@ function CMD_RESELLER_SHOW($tabla){
 	return $tabla;
 }
 
-// ¸ù¾İ²»Í¬ÏµÍ³È¡µÃCPUÏà¹ØĞÅÏ¢
+// æ ¹æ®ä¸åŒç³»ç»Ÿå–å¾—CPUç›¸å…³ä¿¡æ¯
 switch(PHP_OS) {
 	case "Linux":
 		$sysReShow = (false !== ($sysInfo = sys_linux()))?"show":"none";
@@ -56,7 +56,7 @@ switch(PHP_OS) {
 		break;
 }
 
-//linuxÏµÍ³Ì½²â
+//linuxç³»ç»Ÿæ¢æµ‹
 function sys_linux() {
 
 	// UPTIME
@@ -100,9 +100,9 @@ function sys_linux() {
 	return $res;
 }
 
-// ·şÎñÆ÷¶Ë¿Ú×´Ì¬
+// æœåŠ¡å™¨ç«¯å£çŠ¶æ€
 function getPortStatus($ip,$port) {
-	$fp = @fsockopen($ip, $port, &$errno, &$errstr, 10);
+	$fp = @fsockopen($ip, $port, $errno, $errstr, 10);
 	if (!$fp) {
 		$string = " <span class=\"label pull-right label-important\"><i class=\"fa fa-ban\"></i></span>";
 	} else {
@@ -111,7 +111,7 @@ function getPortStatus($ip,$port) {
  	return $string;
 }
 
-// ÓïÑÔÇĞ»»
+// è¯­è¨€åˆ‡æ¢
 function getLanguages($root) {
     $langdir = $root . "lang/";
     $languages = array();
@@ -126,7 +126,7 @@ function getLanguages($root) {
     return $languages;
 }
 
-// »ñÈ¡ÓòÃûÁĞ±í
+// è·å–åŸŸååˆ—è¡¨
 function getDomainsList() {
     global $ts;
     $ret = array();
@@ -141,7 +141,7 @@ function getDomainsList() {
     return $ret;
 }
 
-// »ñÈ¡ÓÃ»§×´Ì¬
+// è·å–ç”¨æˆ·çŠ¶æ€
 function getDateCreated() {
     global $ts;
     $ret = array();
@@ -185,7 +185,7 @@ class tsclass {
         } else {
             $sIP = '127.0.0.1';
         }
-        $res = @fsockopen($sIP, $_SERVER['SERVER_PORT'], &$sock_errno, &$sock_errstr, 2);
+        $res = @fsockopen($sIP, $_SERVER['SERVER_PORT'], $sock_errno, $sock_errstr, 2);
         if ($sock_errno || $sock_errstr)
             return false;
         fputs($res, $send, strlen($send));
